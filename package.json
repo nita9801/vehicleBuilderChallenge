@@ -1,0 +1,25 @@
+{
+  "name": "vehiclebuilderchallenge",
+  "version": "1.0.0",
+  "description": "builds cars and allows user to use with option to choose alternate vehicles ie truck and motorbike",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "start": "npm run build && node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/nita9801/vehicleBuilderChallenge.git"
+  },
+  "author": "Christine Lopez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nita9801/vehicleBuilderChallenge/issues"
+  },
+  "homepage": "https://github.com/nita9801/vehicleBuilderChallenge#readme",
+  "dependencies": {
+    "inquirer": "^12.3.2",
+    "typescript": "^5.7.3"
+  }
+}
