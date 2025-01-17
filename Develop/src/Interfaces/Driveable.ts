@@ -1,8 +1,6 @@
 // definition of the Driveable interface
-interface Driveable {
-  // declare the properties
-  started: boolean;
-  currentSpeed: number;
+ export interface Driveable {
+ 
   // declare the methods
   start(): void;
   accelerate(change: number): void;
@@ -10,7 +8,12 @@ interface Driveable {
   stop(): void;
   turn(direction: string): void;
   reverse(): void;
+  
+  // declare the properties
+  started: boolean;
+  currentSpeed: number;
 }
+ 
 
-// export the Driveable interface
+  // export the Driveable interface
 export default Driveable;

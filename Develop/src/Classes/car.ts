@@ -1,18 +1,13 @@
  // Importing Vehicle and Wheel classes
- import Vehicle from './Vehicle.js';
- import Wheel from './Wheel.js';
+ import { Vehicle } from './Vehicle';
+ import { Wheel } from './Wheel';
+
       // Car class that extends Vehicle class
  class Car extends Vehicle {
      // Declare properties of the Car class
-     vin: string;
-     color: string;
-     make: string;
-     model: string;
-     year: number;
-     weight: number;
-     topSpeed: number;
-     wheels: Wheel[];
-     // Constructor for the Car class
+       wheels: Wheel[];
+     
+       // Constructor for the Car class
  constructor(
      vin: string,
      color: string,
@@ -23,8 +18,9 @@
      topSpeed: number,
      wheels: Wheel[]
      // Call the constructor of the parent class, Vehicle
- ) { super(vin, color, make, model, year, weight,topSpeed);
-     // Initialize properties of the Car class
+ ) { 
+  // Initialize properties of the Car class
+     super(vin, color, make, model, year, weight,topSpeed);
      this.vin = vin;
      this.color = color;
      this.make = make;

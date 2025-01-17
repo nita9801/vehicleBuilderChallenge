@@ -1,14 +1,34 @@
 // import Driveable interface
-import Driveable from '../interfaces/Driveable.js';
-
-// Vehicle class that implements Driveable interface
-class Vehicle implements Driveable {
-  // Declare properties of the Vehicle class
+import { Driveable } from '.\src\Interfaces\Driveable.ts';
+// Declare properties of the Vehicle class
+export class Vehicle implements Driveable {
+  vin: string;
+  color: string;
+  make: string;
+  model: string;
+  year: number;
+  weight: number;
+  topSpeed: number;
   started: boolean;
   currentSpeed: number;
 
   // Constructor for the Vehicle class
-  constructor() {
+  constructor(
+    vin: string,
+    color: string,
+    make: string,
+    model: string,
+    year: number,
+    weight: number,
+    topSpeed: number
+  ) {
+    this.vin = vin;
+    this.color = color;
+    this.make = make;
+    this.model = model;
+    this.year = year;
+    this.weight = weight;
+    this.topSpeed = topSpeed;
     this.started = false;
     this.currentSpeed = 0;
   }
