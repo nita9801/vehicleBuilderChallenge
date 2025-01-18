@@ -1,22 +1,23 @@
 // Wheel class that defines the properties of a wheel
-export class Wheel {
-  private diameter: number;
-  private tireBrand: string;
+class Wheel {
+  // Declare properties of the Wheel class using private access modifier
+  private size: number;
+  private brand: string;
 
   // Constructor for the Wheel class
-  constructor(diameter: number = 18, tireBrand: string = "GoodYear") {
-    this.diameter = diameter;
-    this.tireBrand = tireBrand;
+  constructor(size: number = 18, type: string = "GoodYear") {
+    this.size = size;
+    this.brand = type;
   }
 
   // Getter methods for the properties of the Wheel class
   get getDiameter(): number {
-    return this.diameter;
+    return this.size;
   }
 
   // Setter method for the diameter property
   get getTireBrand(): string {
-    return this.tireBrand;
+    return this.brand;
   }
 }
 

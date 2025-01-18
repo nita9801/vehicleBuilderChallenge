@@ -1,21 +1,21 @@
 // importing classes from other files
 import inquirer from "inquirer";
-import Truck from "./Truck";
-import Car from "./car";
-import Motorbike from "./Motorbike";
-import Wheel from "./Wheel";
+import Truck from "./Truck.js";
+import Car from "./Car.js";
+import Motorbike from "./Motorbike.js";
+import Wheel from "./Wheel.js";
 
 // define the Cli class
- export default class Cli {
-  // vehicles property to accept Truck and Motorbike objects as well
+class Cli {
+  // TODO: update the vehicles property to accept Truck and Motorbike objects as well
   // TODO: You will need to use the Union operator to define additional types for the array
   // TODO: See the AbleToTow interface for an example of how to use the Union operator
-  vehicles: (Car | Truck | Motorbike)[];
+  vehicles: (Car)[];
   selectedVehicleVin: string | undefined;
   exit: boolean = false;
 
   // TODO: Update the constructor to accept Truck and Motorbike objects as well
-  constructor(vehicles: (Car | Truck | Motorbike)[]) {
+  constructor(vehicles: (Car)[]) {
     this.vehicles = vehicles;
   }
 
@@ -164,11 +164,6 @@ import Wheel from "./Wheel";
           message: 'Enter Top Speed',
         },
         {
-          type:'input',
-          name: 'wheel',
-          message:'Enter Wheels (comma-separated diameters)',
-        },
-        {
           type: 'input',
           name: 'towingCapacity',
           message: 'Enter Towing Capacity',
@@ -176,26 +171,10 @@ import Wheel from "./Wheel";
       ])
       .then((answers) => {
         // TODO: Use the answers object to pass the required properties to the Truck constructor
-        const wheels = answers.wheel.split(',').map((wheel: string) => new Wheel(parseInt(wheel.trim()), 'DefaultBrand'));
-        const truck = new Truck(
-          Cli.generateVin(),
-          answers.color,
-          answers.make,
-          answers.model,
-          parseInt(answers.year),
-          parseInt(answers.weight),
-          parseInt(answers.topSpeed),
-          wheels,
-          parseInt(answers.towingCapacity),
-        );
-        
         // TODO: push the truck to the vehicles array
-        this.vehicles.push(truck);
-        console.log('Truck created:', truck);
-      });
         // TODO: set the selectedVehicleVin to the vin of the truck
         // TODO: perform actions on the truck
-    
+      });
   }
 
   // method to create a motorbike
@@ -408,4 +387,4 @@ import Wheel from "./Wheel";
 }
 
 // export the Cli class
-
+export default Cli;
