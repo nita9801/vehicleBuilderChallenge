@@ -1,9 +1,9 @@
 // import classes
-import { Truck } from "./Truck";
-import { Car } from "./car";
-import { Motorbike } from "./Motorbike";
-import { Wheel } from "./Wheel.";
-import { Cli } from "./Cli";
+import { Truck } from '../src/Classes/Truck';
+import { Car } from '../src/Classes/car';
+import { Motorbike } from '../src/Classes/Motorbike';
+import { Wheel } from '../src/Classes/Wheel';
+import Cli  from '../src/Classes/Cli';
 
 // create an array of vehicles
 const vehicles = [];
@@ -23,7 +23,7 @@ const car1 = new Car(
 );
 
 const motorbike1Wheels = [new Wheel(17, "Michelin"), new Wheel(17, "Michelin")];
- const motorbike1 = new Motorbike(Cli.generateVin(), "black", "Harley Davidson", "Sportster", 2021, 500, 125, motorbike1Wheels);
+ const motorbike1 = new Motorbike(Cli.generateVin(), "black", "Harley Davidson", "Sportster", 2021, 500, 125, motorbike1Wheels, 0);
 
 // push vehicles to array
 vehicles.push(truck1);

@@ -3,7 +3,7 @@ import { Vehicle } from './Vehicle.js';
 import { Motorbike } from './Motorbike.js';
 import { Car } from './car';
 import { Wheel } from './Wheel';
-import { AbleToTow } from '../AbleToTow';
+import AbleToTow  from '../Interfaces/Able To Tow.js';
 
 // The Truck class should extend the Vehicle class and should implement the AbleToTow interface
 export class Truck extends Vehicle implements AbleToTow {
@@ -46,15 +46,13 @@ export class Truck extends Vehicle implements AbleToTow {
     } else {
       console.log(`The ${makeAndModel} is too heavy to be towed.`);
     }
-  
-
   }
   override printDetails(): void {
     super.printDetails();
     console.log(`Weight: ${this.weight}`);
     console.log(`Top Speed: ${this.topSpeed}`);
     console.log(`Towing Capacity: ${this.towingCapacity}`);
-    console.log(`Wheels: ${this.wheels.map(wheel => `${wheel.size} inch ${wheel.type}`).join(', ')}`);
+    console.log(`Wheels: ${this.wheels.map(wheel => `${wheel.getDiameter} inch ${wheel.getTireBrand}`).join(', ')}`);
   }
  }
 // Export the Truck class as the default export
