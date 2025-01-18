@@ -3,7 +3,7 @@
  import { Wheel } from './Wheel';
 
       // Car class that extends Vehicle class
- class Car extends Vehicle {
+ export class Car extends Vehicle {
      // Declare properties of the Car class
        wheels: Wheel[];
      

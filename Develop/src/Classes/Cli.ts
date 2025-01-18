@@ -1,7 +1,7 @@
 // importing classes from other files
 import inquirer from "inquirer";
 import Truck from "./Truck.js";
-import Car from "./Car.js";
+import Car from "./car";
 import Motorbike from "./Motorbike.js";
 import Wheel from "./Wheel.js";
 

@@ -1,5 +1,6 @@
 // import Driveable interface
-import { Driveable } from '.\src\Interfaces\Driveable.ts';
+import { Driveable } from '../Interfaces/Driveable';
+
 // Declare properties of the Vehicle class
 export class Vehicle implements Driveable {
   vin: string;
@@ -32,17 +33,30 @@ export class Vehicle implements Driveable {
     this.started = false;
     this.currentSpeed = 0;
   }
-
+ 
+  // Method to start the vehicle
+ start(): void {
+    this.started = true;
+    console.log('Vehicle started');
+  }
+  // Method stop the vehicle
+  stop(): void {
+    this.started = false;
+    this.currentSpeed = 0;
+    console.log('Vehicle stopped');
+  }
+  // Method turn the vehicle
+  turn(direction: string): void {
+    console.log(`Vehicle turned ${direction}`);
+  }
+  // Method reverse the vehicle
+  reverse(): void {
+    console.log('Vehicle reversed');
+  }
   // Method to print vehicle details
   printDetails(): void {
     console.log(`Vehicle started: ${this.started}`);
     console.log(`Vehicle current speed: ${this.currentSpeed} mph`);
-  }
-
-  // Method to start the vehicle
-  start(): void {
-    this.started = true;
-    console.log('Vehicle started');
   }
 
   // Method to accelerate the vehicle
@@ -61,6 +75,9 @@ export class Vehicle implements Driveable {
     // Check if the vehicle is started
     if (this.started) {
       this.currentSpeed -= change;
+      if (this.currentSpeed < 0) {
+        this.currentSpeed = 0;
+      }
       console.log(`Vehicle decelerated to ${this.currentSpeed} mph`);
     } else {
       console.log('Start the vehicle first');
