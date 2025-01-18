@@ -1,7 +1,7 @@
 // definition of the Driveable interface
  export interface Driveable {
- 
-  // declare the methods
+
+ // declare the methods
   start(): void;
   accelerate(change: number): void;
   decelerate(change: number): void;

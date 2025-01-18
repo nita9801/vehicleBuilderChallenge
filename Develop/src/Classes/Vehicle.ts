@@ -1,5 +1,5 @@
 // import Driveable interface
-import { Driveable } from '../Interfaces/Driveable';
+import Driveable from '../Interfaces/Driveable.js';
 
 // Declare properties of the Vehicle class
 export class Vehicle implements Driveable {
