@@ -1,21 +1,20 @@
 // importing classes from other files
 import inquirer from "inquirer";
-import Truck from "./Truck.js";
-import Car from "./Car.js";
-import Motorbike from "./Motorbike.js";
-import Wheel from "./Wheel.js";
+import { Truck } from "../classes/Truck";
+import { car } from "../classes/car";
+import { Motorbike } from "../classes/Motorbike";
+import { Wheel } from "../classes/Wheel";
 
 // define the Cli class
-class Cli {
+export class Cli {
   // TODO: update the vehicles property to accept Truck and Motorbike objects as well
   // TODO: You will need to use the Union operator to define additional types for the array
   // TODO: See the AbleToTow interface for an example of how to use the Union operator
-  vehicles: (Car)[];
+  vehicles: (car)[];
   selectedVehicleVin: string | undefined;
   exit: boolean = false;
 
-  // TODO: Update the constructor to accept Truck and Motorbike objects as well
-  constructor(vehicles: (Car)[]) {
+  constructor(vehicles: (car| Truck| Motorbike)[]) {
     this.vehicles = vehicles;
   }
 
@@ -65,7 +64,7 @@ class Cli {
         },
       ])
       .then((answers) => {
-        if (answers.vehicleType === 'Car') {
+        if (answers.vehicleType === 'car') {
           // create a car
           this.createCar();
         }

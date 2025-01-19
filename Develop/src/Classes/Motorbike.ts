@@ -1,6 +1,6 @@
 // Importing Vehicle and Wheel classes
-import { Vehicle } from './Vehicle';
-import { Wheel } from './Wheel';
+import { Vehicle } from "./Vehicle";
+import { Wheel } from "./Wheel";
 
 // TODO: The Motorbike class should extend the Vehicle class
 export class Motorbike extends Vehicle {

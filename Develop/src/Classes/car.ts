@@ -1,19 +1,18 @@
 // Importing Vehicle and Wheel classes
-import Vehicle from './Vehicle.js';
-import Wheel from './Wheel.js';
-
+import { Vehicle } from '../classes/Vehicle';
+import { Wheel } from '../classes/Wheel';
+import { AbleToTow } from '../Interfaces/Able To Tow';
 // Car class that extends Vehicle class
-class Car extends Vehicle {
-  // Declare properties of the Car class
-  vin: string;
-  color: string;
-  make: string;
+export class car extends Vehicle {
+  vin: string; 
+  color: string; 
+  make: string; 
   model: string;
   year: number;
   weight: number;
   topSpeed: number;
   wheels: Wheel[];
-
+  
   // Constructor for the Car class
   constructor(vin: string, color: string, make: string, model: string, year: number, weight: number, topSpeed: number, wheels: Wheel[]) 
   { 
@@ -68,4 +67,4 @@ class Car extends Vehicle {
 }
 
 // Export the Car class as the default export
-export default Car;
+export default car;
