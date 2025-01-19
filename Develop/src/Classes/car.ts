@@ -1,23 +1,25 @@
 // Importing Vehicle and Wheel classes
-import { Vehicle } from '../classes/Vehicle';
-import { Wheel } from '../classes/Wheel';
-import { AbleToTow } from '../Interfaces/Able To Tow';
+
+import { Vehicle } from "./Vehicle";
+import { Wheel } from "./Wheel";
+import AbleToTow  from "../Interfaces/Able To Tow";
+
 // Car class that extends Vehicle class
 export class car extends Vehicle {
-  vin: string; 
-  color: string; 
-  make: string; 
-  model: string;
-  year: number;
-  weight: number;
-  topSpeed: number;
+  override vin: string; 
+  override color: string; 
+  override make: string; 
+  override model: string;
+  override year: number;
+  override weight: number;
+  override topSpeed: number;
   wheels: Wheel[];
   
   // Constructor for the Car class
   constructor(vin: string, color: string, make: string, model: string, year: number, weight: number, topSpeed: number, wheels: Wheel[]) 
   { 
     // Call the constructor of the parent class, Vehicle
-    super();
+    super(vin, color, make, model, year, weight, topSpeed);
     // Initialize properties of the Car class
     this.vin = vin;
     this.color = color;

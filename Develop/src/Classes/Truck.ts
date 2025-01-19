@@ -60,21 +60,13 @@ import { NamedTupleMember } from 'typescript';
     this.wheels.forEach((wheel, index) => {
       console.log(`Wheel ${index + 1}: ${wheel.getDiameter} inch with a ${wheel.getTireBrand} tire`);
     });
-   // TODO: Implement the tow method from the AbleToTow interface
-    tow(Vehicle: Truck | Motorbike | car): void {
-      const makeAndModel = `${Vehicle.make} ${Vehicle.model}`;
-      if (Vehicle.weight <= this.towingCapacity) {
-        console.log(`The ${makeAndModel} is being towed.`);
-      } else {
-        console.log(`The ${makeAndModel} is too heavy to be towed.`);
-      }
-  }
+  };
     // default wheels to have validation
     static defaultWheels(): Wheel[] {
     return [new Wheel(20, "Generic"), new Wheel(20, "Generic"), new Wheel(20, "Generic"), new Wheel(20, "Generic")];
     }
    }
-  }
+  
 // Export the Truck class as the default export
 export default Truck;
 function tow(vehicle: any, arg1: number) {

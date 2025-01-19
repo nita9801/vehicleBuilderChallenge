@@ -1,7 +1,7 @@
 // import the classes
-import { Truck }  from "../classes/Truck";
-import { Motorbike } from "../classes/Motorbike";
-import { car } from "../classes/car";
+import { Truck }  from "./Truck";
+import { Motorbike } from "./Motorbike";
+import { car } from "./car";
 
 // define the interface
 export interface AbleToTow {
