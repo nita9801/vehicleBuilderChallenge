@@ -12,6 +12,7 @@ export class Vehicle implements Driveable {
   topSpeed: number;
   started: boolean;
   currentSpeed: number;
+  static model: any;
 
   // Constructor for the Vehicle class
   constructor(

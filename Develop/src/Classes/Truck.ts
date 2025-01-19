@@ -19,11 +19,7 @@ import { NamedTupleMember } from 'typescript';
    wheels: Wheel[];
    towingCapacity: number;
 
-  // default wheels to have validation
-  static defaultWheels(): Wheel[] {
-  return [new Wheel(20, "Generic"), new Wheel(20, "Generic"), new Wheel(20, "Generic"), new Wheel(20, "Generic")];
-};
-  // Declare properties of the Truck class
+   // Declare properties of the Truck class
   constructor(
      vin: string, 
      color: string,
@@ -37,40 +33,51 @@ import { NamedTupleMember } from 'typescript';
 ) {
   // call the constructor of the parent class, Vehicle
   super(vin, color, make, model, year, weight, topSpeed);
-
-  // Validate input
-  if (weight <= 0) throw new Error("Weight must be a positive number.");
-  if (topSpeed <= 0) throw new Error("Top speed must be a positive number.");
-  if (towingCapacity <= 0) throw new Error("Towing capacity must be a positive number.");
-   
-    this.wheels = wheels.length > 0 ? wheels : Truck.defaultWheels();
-    this.towingCapacity = towingCapacity;
-
-  } 
-  // TODO: Override the printDetails method from the Vehicle class
-  override printDetails(): void {
-    super.printDetails(); // Call the parent method
-    console.log(`Weight: ${this.weight}`);
-    console.log(`Top Speed: ${this.topSpeed}`);
-    console.log(`Towing Capacity: ${this.towingCapacity} lbs`);
-    console.log(`Wheels: ${this.wheels.map((wheel) => `${wheel.size()} inch ${wheel.brand}`).join(', ')}`
-  
-  // Print details of the wheels
-   printWheelDetails(): void {
-    this.wheels.forEach((wheel, index) => {
-      console.log(`Wheel ${index + 1}: ${wheel.size} inch with a ${wheel.brand} tire`);
-    });
+  this.vin = vin;
+  this.color = color;
+  this.make = make;
+  this.model = model;
+  this.year = year;
+  this.weight = weight;
+  this.topSpeed = topSpeed;
+  this.wheels = wheels.length > 0 ? wheels : Truck.defaultWheels();
+  this.towingCapacity = towingCapacity;
   }
+    tow(vehicle: Truck | Motorbike | car): void {
+      throw new Error('Method not implemented.');
+    }
+ // Override the printDetails method from the Vehicle class
+  override printDetails(): void {
+  super.printDetails(); // Call the parent method
+  console.log(`Weight: ${this.weight}`);
+  console.log(`Top Speed: ${this.topSpeed}`);
+  console.log(`Towing Capacity: ${this.towingCapacity} lbs`);
+  console.log(`Wheels: ${this.wheels.map((wheel) => `${wheel.getDiameter} inch ${wheel.getTireBrand}`).join(', ')}`);
+  this.printWheelDetails(); // Call the printWheelDetails method
 }
- // TODO: Implement the tow method from the AbleToTow interface
-  tow(vehicle: Truck | Motorbike | car): void {
-    const makeAndModel = `${vehicle.make} ${vehicle.model}`;
-    if (vehicle.weight <= this.towingCapacity) {
-    console.log(`The ${makeAndModel} is being towed.`);
-    } else {
-    console.log(`The ${makeAndModel} is too heavy to be towed.`);
+  // Call the printWheelDetails method
+    printWheelDetails(): void {
+    this.wheels.forEach((wheel, index) => {
+      console.log(`Wheel ${index + 1}: ${wheel.getDiameter} inch with a ${wheel.getTireBrand} tire`);
+    });
+   // TODO: Implement the tow method from the AbleToTow interface
+    tow(Vehicle: Truck | Motorbike | car): void {
+      const makeAndModel = `${Vehicle.make} ${Vehicle.model}`;
+      if (Vehicle.weight <= this.towingCapacity) {
+        console.log(`The ${makeAndModel} is being towed.`);
+      } else {
+        console.log(`The ${makeAndModel} is too heavy to be towed.`);
+      }
+  }
+    // default wheels to have validation
+    static defaultWheels(): Wheel[] {
+    return [new Wheel(20, "Generic"), new Wheel(20, "Generic"), new Wheel(20, "Generic"), new Wheel(20, "Generic")];
     }
    }
   }
 // Export the Truck class as the default export
 export default Truck;
+function tow(vehicle: any, arg1: number) {
+  throw new Error('Function not implemented.');
+}
+

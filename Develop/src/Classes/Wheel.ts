@@ -12,12 +12,12 @@ export class Wheel {
 
   // Getter methods for the properties of the Wheel class
   get getDiameter(): number {
-    return this.size;
+    return this.getDiameter;
   }
 
   // Setter method for the diameter property
   get getTireBrand(): string {
-    return this.brand;
+    return this.getTireBrand;
   }
 }
 
