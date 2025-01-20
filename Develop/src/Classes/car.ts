@@ -13,6 +13,7 @@ export class car extends Vehicle {
   override weight: number;
   override topSpeed: number;
   Wheel: Wheel[] = [];
+  static vin: string | undefined;
   
   // Constructor for the Car class
   constructor(vin: string, color: string, make: string, model: string, year: number, weight: number, topSpeed: number, wheels: Wheel[]) 
