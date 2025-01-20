@@ -67,21 +67,107 @@ createVehicle(): void {
     });
 }
      // method to create a car
- 
-}
-    // method to create a truck
-   {createTruck(): void {
+  createCar(): void {
     inquirer
       .prompt([
-        { type: 'input', name: 'color', message: 'Enter Color' },
-        { type: 'input', name: 'make', message: 'Enter Make' },
-        { type: 'input', name: 'model', message: 'Enter Model' },
-        { type: 'input', name: 'year', message: 'Enter Year' },
-        { type: 'input', name: 'weight', message: 'Enter Weight' },
-        { type: 'input', name: 'topSpeed', message: 'Enter Top Speed' },
-        { type: 'input', name: 'towingCapacity', message: 'Enter Towing Capacity' },
+        {
+          type: 'input',
+          name: 'color',
+          message: 'Enter Color',
+        },
+        {
+          type: 'input',
+          name: 'make',
+          message: 'Enter Make',
+        },
+        {
+          type: 'input',
+          name: 'model',
+          message: 'Enter Model',
+        },
+        {
+          type: 'input',
+          name: 'year',
+          message: 'Enter Year',
+        },
+        {
+          type: 'input',
+          name: 'weight',
+          message: 'Enter Weight',
+        },
+        {
+          type: 'input',
+          name: 'topSpeed',
+          message: 'Enter Top Speed',
+        },
       ])
       .then((answers: any) => {
+        const wheels = answers.wheels.split(',').map((wheel: string) => new Wheel(parseInt(wheel.trim()), 'DefaultBrand'));
+        const car = new Car(
+          // TODO: The generateVin method is static and should be called using the class name Cli, make sure to use Cli.generateVin() for creating a truck and motorbike as well!
+          Cli.generateVin(),
+          answers.color,
+          answers.make,
+          answers.model,
+          parseInt(answers.year),
+          parseInt(answers.weight),
+          parseInt(answers.topSpeed),
+          wheels
+        );
+
+        // push the car to the vehicles array
+        this.vehicles.push(car);
+        console.log('Car created:', car);
+        // set the selectedVehicleVin to the vin of the car
+        this.selectedVehicleVin = car.vin;
+        // perform actions on the car
+        this.performActions(); 
+    });
+  }
+}
+      // method to create a truck
+  createTruck(): void {
+    inquirer
+      .prompt([
+        {
+          type: 'input',
+          name: 'color',
+          message: 'Enter Color',
+        },
+        {
+          type: 'input',
+          name: 'make',
+          message: 'Enter Make',
+        },
+        {
+          type: 'input',
+          name: 'model',
+          message: 'Enter Model',
+        },
+        {
+          type: 'input',
+          name: 'year',
+          message: 'Enter Year',
+        },
+        {
+          type: 'input',
+          name: 'weight',
+          message: 'Enter Weight',
+        },
+        {
+          type: 'input',
+          name: 'topSpeed',
+          message: 'Enter Top Speed',
+        },
+        {
+          type: 'input',
+          name: 'towingCapacity',
+          message: 'Enter Towing Capacity',
+        }
+      ])   
+     .then((answers: any) => { 
+         // Use the answers object to pass the required properties to the Truck constructor
+        const wheels = answers.wheels.split(',').map((wheel: string) => new Wheel(parseInt(wheel.trim()), 'DefaultBrand'));
         const truck = new Truck(
           Cli.generateVin(),
           answers.color,
@@ -90,82 +176,119 @@ createVehicle(): void {
           parseInt(answers.year),
           parseInt(answers.weight),
           parseInt(answers.topSpeed),
-          Truck.defaultWheels(), // Use default wheels for simplicity
+          wheels,
           parseInt(answers.towingCapacity)
         );
+
+       // push the truck to the vehicles array
         this.vehicles.push(truck);
         console.log('Truck created:', truck);
-        this.selectedVehicleVin = truck.vin;
-        this.performActions();
-      });
-  }
-       // method to create a motorbike      
-       createMotorbike(): void {
-        inquirer
-          .prompt([
-            { type: 'input', name: 'color', message: 'Enter Color' },
-            { type: 'input', name: 'make', message: 'Enter Make' },
-            { type: 'input', name: 'model', message: 'Enter Model' },
-            { type: 'input', name: 'year', message: 'Enter Year' },
-            { type: 'input', name: 'weight', message: 'Enter Weight' },
-            { type: 'input', name: 'topSpeed', message: 'Enter Top Speed' },
-            { type: 'input', name: 'frontWheelDiameter', message: 'Enter Front Wheel Diameter' },
-            { type: 'input', name: 'frontWheelBrand', message: 'Enter Front Wheel Brand' },
-            { type: 'input', name: 'rearWheelDiameter', message: 'Enter Rear Wheel Diameter' },
-            { type: 'input', name: 'rearWheelBrand', message: 'Enter Rear Wheel Brand' },
-          ])
-          .then((answers: any) => {
-            const wheels = [
-              new Wheel(parseInt(answers.frontWheelDiameter), answers.frontWheelBrand),
-              new Wheel(parseInt(answers.rearWheelDiameter), answers.rearWheelBrand),
-            ];
-            const motorbike = new Motorbike(
-              Cli.generateVin(),
-              answers.color,
-              answers.make,
-              answers.model,
-              parseInt(answers.year),
-              parseInt(answers.weight),
-              parseInt(answers.topSpeed),
-              wheels
-            );
-            this.vehicles.push(motorbike);
-            console.log('Motorbike created:', motorbike);
-            this.selectedVehicleVin = motorbike.vin;
-            this.performActions();
-          });
-      }
-      // method to find a vehicle to tow
-      findVehicleToTow(): void {
-        const selectedVehicle = this.vehicles.find(vehicle => vehicle.vin === this.selectedVehicleVin);
-        if (!(selectedVehicle instanceof Truck)) {
-          console.log('Only trucks can tow vehicles.');
-          this.performActions();
-          return;
-        }
-        const truck = selectedVehicle as Truck;
       
-        inquirer
-          .prompt([
-            {
-              type: 'list',
-              name: 'vehicleToTowVin',
-              message: 'Select a vehicle to tow',
-              choices: this.vehicles
-                .filter(vehicle => vehicle.vin !== truck.vin)
-                .map(vehicle => ({
-                  name: `${vehicle.vin} -- ${vehicle.make} ${vehicle.model}`,
-                  value: vehicle.vin,
-                })),
-            },
-          ])
-          .then((answers) => {
-            const vehicleToTow = this.vehicles.find(vehicle => vehicle.vin === answers.vehicleToTowVin);
-            if (vehicleToTow) {
-              truck.tow(vehicleToTow);
-            }
-            this.performActions();
-          });        
+        //selectedVehicleVin to the vin of the truck 
+        this.selectedVehicleVin = Truck.vin;
+        
+        // perform actions on the car
+        this.performActions(); 
+    });
+
+        // method to create a motorbike
+  createMotorbike(): void {
+    inquirer
+      .prompt([
+        {
+          type: 'input',
+          name: 'color',
+          message: 'Enter Color',
+        },
+        {
+          type: 'input',
+          name: 'make',
+          message: 'Enter Make',
+        },
+        {
+          type: 'input',
+          name: 'model',
+          message: 'Enter Model',
+        },
+        {
+          type: 'input',
+          name: 'year',
+          message: 'Enter Year',
+        },
+        {
+          type: 'input',
+          name: 'weight',
+          message: 'Enter Weight',
+        },
+        {
+          type: 'input',
+          name: 'topSpeed',
+          message: 'Enter Top Speed',
+        },
+        {
+          type: 'input',
+          name: 'frontWheelDiameter',
+          message: 'Enter Front Wheel Diameter',
+        },
+        {
+          type: 'input',
+          name: 'frontWheelBrand',
+          message: 'Enter Front Wheel Brand',
+        },
+        {
+          type: 'input',
+          name: 'rearWheelDiameter',
+          message: 'Enter Rear Wheel Diameter',
+        },
+        {
+          type: 'input',
+          name: 'rearWheelBrand',
+          message: 'Enter Rear Wheel Brand',
+        },
+      ])
+      .then((answers: any) => {
+        //Use the answers object to pass the required properties to the Motorbike constructor
+        const wheels = answers.wheels.split(',').map((wheel: string) => new Wheel(parseInt(wheel.trim()), 'DefaultBrand'));
+        const motorbike = new Motorbike(
+          Cli.generateVin(),
+          answers.color,
+          answers.make,
+          answers.model,
+          parseInt(answers.year),
+          parseInt(answers.weight),
+          parseInt(answers.topSpeed),
+          wheels,
+        0 // TODO: push the motorbike to the vehicles array
+        this.vehicles.push(motorbike);
+        console.log('Motorbike created:', motorbike);
+      });
+    }
+  }
+
+    TODO: set the selectedVehicleVin to the vin of the motorbike
+        // TODO: perform actions on the motorbike
+        // method to find a vehicle to tow
+        // TODO: add a parameter to accept a truck object
+  
+        findVehicleToTow(): void {
+    inquirer
+      .prompt([
+        {
+          type: 'list',
+          name: 'vehicleToTow',
+          message: 'Select a vehicle to tow',
+          choices: this.vehicles.map((vehicle) => {
+            return {
+              name: `${vehicle.vin} -- ${vehicle.make} ${vehicle.model}`,
+              value: vehicle,
+            };
+          }),
+        },
+      ])
+      .then((answers) => {
+        // TODO: check if the selected vehicle is the truck
+        // TODO: if it is, log that the truck cannot tow itself then perform actions on the truck to allow the user to select another action
+        // TODO: if it is not, tow the selected vehicle then perform actions on the truck to allow the user to select another action
       });
   }
 
@@ -251,50 +374,19 @@ createVehicle(): void {
             }
           }
         }
-        
-        //  tow action only if the selected vehicle is a truck. 
-  
-        towVehicle(): void {
-    const selectedVehicle = this.vehicles.find(vehicle => vehicle.vin === this.selectedVehicleVin);
-          if (selectedVehicle instanceof Truck) {
-            console.log('The truck cannot tow itself.');
-            this.performActions();
-          } else {
-    const truck = this.vehicles.find(vehicle => vehicle instanceof Truck) as Truck;
-        if (truck) {
-            truck.tow(selectedVehicle as Car | Motorbike);
-    this.performActions();
-    } else {
-        console.log('No truck available to tow the vehicle.');
-          }
-            break;
-
-        // perform the wheelie action only if the selected vehicle is a motorbike
-    
-   if (selectedVehicle instanceof Motorbike) {
-          selectedVehicle.wheelie();
- } else {
-          console.log('Only motorbikes can perform a wheelie.');
-        }
-            break;
-    case 'Select or create another vehicle':
-      this.startCli();
-        return;
-    case 'Exit':
-        this.exit = true;
-            break;
-  }
-    else if (answers.action === 'Select or create another vehicle') {
+        // TODO: add statements to perform the tow action only if the selected vehicle is a truck. Call the findVehicleToTow method to find a vehicle to tow and pass the selected truck as an argument. After calling the findVehicleToTow method, you will need to return to avoid instantly calling the performActions method again since findVehicleToTow is asynchronous.
+        // TODO: add statements to perform the wheelie action only if the selected vehicle is a motorbike
+        else if (answers.action === 'Select or create another vehicle') {
           // start the cli to return to the initial prompt if the user wants to select or create another vehicle
-      this.startCli();
-            return;
-  } else {
+          this.startCli();
+          return;
+        } else {
           // exit the cli if the user selects exit
-      this.exit = true;
-  }
+          this.exit = true;
+        }
         if (!this.exit) {
           // if the user does not want to exit, perform actions on the selected vehicle
-        this.performActions();
+          this.performActions();
         }
       });
   }
