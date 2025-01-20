@@ -2,7 +2,6 @@
 
 import { Vehicle } from "./Vehicle";
 import { Wheel } from "./Wheel";
-import AbleToTow  from "../Interfaces/Able To Tow";
 
 // Car class that extends Vehicle class
 export class car extends Vehicle {
@@ -13,7 +12,7 @@ export class car extends Vehicle {
   override year: number;
   override weight: number;
   override topSpeed: number;
-  wheels: Wheel[];
+  Wheel: Wheel[] = [];
   
   // Constructor for the Car class
   constructor(vin: string, color: string, make: string, model: string, year: number, weight: number, topSpeed: number, wheels: Wheel[]) 
@@ -32,9 +31,9 @@ export class car extends Vehicle {
     // If not, create 4 new Wheel objects
     // Otherwise, use the provided wheels array
     if (wheels.length !== 4) {
-      this.wheels = [new Wheel(), new Wheel(), new Wheel(), new Wheel()];
+      this.Wheel = [new Wheel(), new Wheel(), new Wheel(), new Wheel()];
     } else {
-      this.wheels = wheels;
+      this.Wheel = wheels;
     }
   }
 
@@ -54,16 +53,16 @@ export class car extends Vehicle {
 
     // Print details of the wheels
     console.log(
-      `Wheel 1: ${this.wheels[0].getDiameter} inch with a ${this.wheels[0].getTireBrand} tire`
+      `Wheel 1: ${this.Wheel[0].getDiameter} inch with a ${this.Wheel[0].getTireBrand} tire`
     );
     console.log(
-      `Wheel 2: ${this.wheels[1].getDiameter} inch with a ${this.wheels[1].getTireBrand} tire`
+      `Wheel 2: ${this.Wheel[1].getDiameter} inch with a ${this.Wheel[1].getTireBrand} tire`
     );
     console.log(
-      `Wheel 3: ${this.wheels[2].getDiameter} inch with a ${this.wheels[2].getTireBrand} tire`
+      `Wheel 3: ${this.Wheel[2].getDiameter} inch with a ${this.Wheel[2].getTireBrand} tire`
     );
     console.log(
-      `Wheel 4: ${this.wheels[3].getDiameter} inch with a ${this.wheels[3].getTireBrand} tire`
+      `Wheel 4: ${this.Wheel[3].getDiameter} inch with a ${this.Wheel[3].getTireBrand} tire`
     );
   }
 }
