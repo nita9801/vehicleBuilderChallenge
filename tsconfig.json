@@ -13,7 +13,7 @@
     "checkJs": true /* Enable error reporting in type-checked JavaScript files. */,
 
     /* Emit */
-    "outDir": "dist" /* Specify an output folder for all emitted files. */,
+    "outDir": "public" /* Specify an output folder for all emitted files. */,
     "noEmitOnError": true /* Disable emitting files if any type checking errors are reported. */,
 
     /* Interop Constraints */
