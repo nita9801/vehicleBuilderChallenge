@@ -1,10 +1,10 @@
 // import classes
 
-import { Motorbike } from"./classes/Motorbike";
-import { car } from "./classes/car";
-import { Wheel } from "./classes/Wheel";
-import { Cli as ImportedCli }  from "./classes/Cli";
-import { Truck } from"./classes/Truck";
+import { Motorbike } from"./src/classes/Motorbike";
+import { car } from "./src/classes/car";
+import { Wheel } from "./src/classes/Wheel";
+import { Cli as ImportedCli }  from "./src/classes/Cli";
+import { Truck } from"./src/classes/Truck";
 
 // create an array of vehicles
 const vehicle: (car | Motorbike | Truck)[] = [];

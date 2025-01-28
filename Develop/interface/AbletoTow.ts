@@ -1,7 +1,7 @@
 // import the classes
-import Truck from "../classes/Truck.js";
-import Motorbike from "../classes/Motorbike.js";
-import Car from "../classes/Car.js";
+import { Truck } from"./Truck";
+import { Motorbike } from "./Motorbike.js";
+import { Car } from "./Car.js";
 
 // define the interface
 interface AbleToTow {
