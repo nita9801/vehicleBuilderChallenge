@@ -1,29 +1,28 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
+var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Cli = void 0;
 // importing classes from other files
-const Motorbike_1 = require("./Motorbike");
-const Car_1 = require("./Car");
-const Truck_1 = require("./Truck");
-const Wheel_1 = require("./Wheel");
-const inquirer_1 = __importDefault(require("inquirer"));
+var Motorbike_1 = require("./Motorbike");
+var Car_1 = require("./Car");
+var Truck_1 = require("./Truck");
+var Wheel_1 = require("./Wheel");
+var inquirer_1 = require("inquirer");
 // define the Cli class
-class Cli {
-    constructor(vehicles) {
+var Cli = /** @class */ (function () {
+    function Cli(vehicles) {
         this.exit = false;
         this.vehicles = vehicles;
     }
     // static method to generate a vin
-    static generateVin() {
+    Cli.generateVin = function () {
         // return a random string
         return (Math.random().toString(36).substring(2, 15) +
             Math.random().toString(36).substring(2, 15));
-    }
+    };
     // method to create a vehicle
-    createVehicle() {
+    Cli.prototype.createVehicle = function () {
+        var _this = this;
         inquirer_1.default
             .prompt([
             {
@@ -34,24 +33,25 @@ class Cli {
                 choices: ['Car', 'Truck', 'Motorbike'],
             },
         ])
-            .then((answers) => {
+            .then(function (answers) {
             switch (answers.vehicleType) {
                 case 'Car':
-                    this.createCar();
+                    _this.createCar();
                     break;
                 case 'Truck':
-                    this.createTruck();
+                    _this.createTruck();
                     break;
                 case 'Motorbike':
-                    this.createMotorbike();
+                    _this.createMotorbike();
                     break;
                 default:
                     console.log('Invalid selection');
             }
         });
-    }
+    };
     // method to choose a vehicle from existing vehicles
-    chooseVehicle() {
+    Cli.prototype.chooseVehicle = function () {
+        var _this = this;
         var _a;
         inquirer_1.default
             .prompt([
@@ -59,26 +59,27 @@ class Cli {
                 type: 'list',
                 name: 'selectedVehicleVin',
                 message: 'Select a vehicle to perform an action on',
-                choices: (_a = this.vehicles) === null || _a === void 0 ? void 0 : _a.map((vehicle) => {
+                choices: (_a = this.vehicles) === null || _a === void 0 ? void 0 : _a.map(function (vehicle) {
                     return {
-                        name: `${vehicle.vin} -- ${vehicle.make} ${vehicle.model}`,
+                        name: "".concat(vehicle.vin, " -- ").concat(vehicle.make, " ").concat(vehicle.model),
                         value: vehicle.vin,
                     };
                 }),
             },
         ])
-            .then((answers) => {
+            .then(function (answers) {
             // set the selectedVehicleVin to the vin of the selected vehicle
-            this.selectedVehicleVin = answers.selectedVehicleVin;
+            _this.selectedVehicleVin = answers.selectedVehicleVin;
             // perform actions on the selected vehicle
-            if (this.vehicles) {
+            if (_this.vehicles) {
                 // this.performActions();
             }
         });
-    }
+    };
     // Removed duplicate performActions method
     // method to perform actions on a vehicle
-    performActions() {
+    Cli.prototype.performActions = function () {
+        var _this = this;
         inquirer_1.default
             .prompt([
             {
@@ -100,13 +101,13 @@ class Cli {
                 ],
             },
         ])
-            .then((answers) => {
+            .then(function (answers) {
             // perform the selected action
             if (answers.action === 'Print details') {
                 // find the selected vehicle and print its details
-                for (let i = 0; i < this.vehicles.length; i++) {
-                    if (this.vehicles[i] && this.vehicles[i].vin === this.selectedVehicleVin) {
-                        this.vehicles[i].printDetails();
+                for (var i = 0; i < _this.vehicles.length; i++) {
+                    if (_this.vehicles[i] && _this.vehicles[i].vin === _this.selectedVehicleVin) {
+                        _this.vehicles[i].printDetails();
                     }
                     // method to start the cli
                     startCli();
@@ -121,13 +122,13 @@ class Cli {
                                 choices: ['Create a new vehicle', 'Select an existing vehicle'],
                             },
                         ])
-                            .then((answers) => {
+                            .then(function (answers) {
                             // check if the user wants to create a new vehicle or select an existing vehicle
                             if (answers.CreateOrSelect === 'Create a new vehicle') {
-                                this.createVehicle();
+                                _this.createVehicle();
                             }
                             else {
-                                this.chooseVehicle();
+                                _this.chooseVehicle();
                             }
                         })
                     };
@@ -135,57 +136,57 @@ class Cli {
             }
             else if (answers.action === 'Start vehicle') {
                 // find the selected vehicle and start it
-                for (let i = 0; i < this.vehicles.length; i++) {
-                    if (this.vehicles[i].vin === this.selectedVehicleVin) {
-                        this.vehicles[i].start();
+                for (var i = 0; i < _this.vehicles.length; i++) {
+                    if (_this.vehicles[i].vin === _this.selectedVehicleVin) {
+                        _this.vehicles[i].start();
                     }
                 }
             }
             else if (answers.action === 'Accelerate 5 MPH') {
                 // find the selected vehicle and accelerate it by 5 MPH
-                for (let i = 0; i < this.vehicles.length; i++) {
-                    if (this.vehicles[i].vin === this.selectedVehicleVin) {
-                        this.vehicles[i].accelerate(5);
+                for (var i = 0; i < _this.vehicles.length; i++) {
+                    if (_this.vehicles[i].vin === _this.selectedVehicleVin) {
+                        _this.vehicles[i].accelerate(5);
                     }
                 }
             }
             else if (answers.action === 'Decelerate 5 MPH') {
                 // find the selected vehicle and decelerate it by 5 MPH
-                for (let i = 0; i < this.vehicles.length; i++) {
-                    if (this.vehicles[i].vin === this.selectedVehicleVin) {
-                        this.vehicles[i].decelerate(5);
+                for (var i = 0; i < _this.vehicles.length; i++) {
+                    if (_this.vehicles[i].vin === _this.selectedVehicleVin) {
+                        _this.vehicles[i].decelerate(5);
                     }
                 }
             }
             else if (answers.action === 'Stop vehicle') {
                 // find the selected vehicle and stop it
-                for (let i = 0; i < this.vehicles.length; i++) {
-                    if (this.vehicles[i].vin === this.selectedVehicleVin) {
-                        this.vehicles[i].stop();
+                for (var i = 0; i < _this.vehicles.length; i++) {
+                    if (_this.vehicles[i].vin === _this.selectedVehicleVin) {
+                        _this.vehicles[i].stop();
                     }
                 }
             }
             else if (answers.action === 'Turn right') {
                 // find the selected vehicle and turn it right
-                for (let i = 0; i < this.vehicles.length; i++) {
-                    if (this.vehicles[i].vin === this.selectedVehicleVin) {
-                        this.vehicles[i].turn('right');
+                for (var i = 0; i < _this.vehicles.length; i++) {
+                    if (_this.vehicles[i].vin === _this.selectedVehicleVin) {
+                        _this.vehicles[i].turn('right');
                     }
                 }
             }
             else if (answers.action === 'Turn left') {
                 // find the selected vehicle and turn it left
-                for (let i = 0; i < this.vehicles.length; i++) {
-                    if (this.vehicles[i].vin === this.selectedVehicleVin) {
-                        this.vehicles[i].turn('left');
+                for (var i = 0; i < _this.vehicles.length; i++) {
+                    if (_this.vehicles[i].vin === _this.selectedVehicleVin) {
+                        _this.vehicles[i].turn('left');
                     }
                 }
             }
             else if (answers.action === 'Reverse') {
                 // find the selected vehicle and reverse it
-                for (let i = 0; i < this.vehicles.length; i++) {
-                    if (this.vehicles[i].vin === this.selectedVehicleVin) {
-                        this.vehicles[i].reverse();
+                for (var i = 0; i < _this.vehicles.length; i++) {
+                    if (_this.vehicles[i].vin === _this.selectedVehicleVin) {
+                        _this.vehicles[i].reverse();
                     }
                 }
             }
@@ -193,23 +194,24 @@ class Cli {
             // TODO: add statements to perform the wheelie action only if the selected vehicle is a motorbike
             else if (answers.action === 'Select or create another vehicle') {
                 // start the cli to return to the initial prompt if the user wants to select or create another vehicle
-                this.startCli();
+                _this.startCli();
                 return;
             }
             else {
                 // exit the cli if the user selects exit
-                if (this) {
-                    this.exit = true;
+                if (_this) {
+                    _this.exit = true;
                 }
             }
-            if (!this.exit) {
+            if (!_this.exit) {
                 // if the user does not want to exit, perform actions on the selected vehicle
                 // this.performActions();
             }
         });
-    }
+    };
     // method to create a car
-    createCar() {
+    Cli.prototype.createCar = function () {
+        var _this = this;
         inquirer_1.default
             .prompt([
             {
@@ -243,20 +245,21 @@ class Cli {
                 message: 'Enter Top Speed',
             },
         ])
-            .then((answers) => {
-            const wheels = answers.wheels.split(',').map((wheel) => new Wheel_1.Wheel(parseInt(wheel.trim()), 'DefaultBrand'));
-            const Car = new Car_1.car(Cli.generateVin(), answers.color, answers.make, answers.model, parseInt(answers.year), parseInt(answers.weight), parseInt(answers.topSpeed), wheels);
+            .then(function (answers) {
+            var wheels = answers.wheels.split(',').map(function (wheel) { return new Wheel_1.Wheel(parseInt(wheel.trim()), 'DefaultBrand'); });
+            var Car = new Car_1.car(Cli.generateVin(), answers.color, answers.make, answers.model, parseInt(answers.year), parseInt(answers.weight), parseInt(answers.topSpeed), wheels);
             // push the car to the vehicles array
-            this.vehicles.push(Car);
+            _this.vehicles.push(Car);
             console.log('Car created:', Car_1.car);
             // set the selectedVehicleVin to the vin of the car
-            this.selectedVehicleVin = Car_1.car.vin;
+            _this.selectedVehicleVin = Car_1.car.vin;
             // perform actions on the car
-            this.performActions();
+            _this.performActions();
         });
-    }
+    };
     // method to create a truck
-    createTruck() {
+    Cli.prototype.createTruck = function () {
+        var _this = this;
         inquirer_1.default
             .prompt([
             {
@@ -300,21 +303,22 @@ class Cli {
                 message: 'Enter Towing Capacity',
             },
         ])
-            .then((answers) => {
+            .then(function (answers) {
             // Use the answers object to pass the required properties to the Truck constructor
-            const wheels = answers.wheels.split(',').map((wheel) => new Wheel_1.Wheel(parseInt(wheel.trim()), 'DefaultBrand'));
-            const truck = new Truck_1.Truck(Cli.generateVin(), answers.color, answers.make, answers.model, parseInt(answers.year), parseInt(answers.weight), parseInt(answers.topSpeed), wheels, parseInt(answers.towingCapacity));
+            var wheels = answers.wheels.split(',').map(function (wheel) { return new Wheel_1.Wheel(parseInt(wheel.trim()), 'DefaultBrand'); });
+            var truck = new Truck_1.Truck(Cli.generateVin(), answers.color, answers.make, answers.model, parseInt(answers.year), parseInt(answers.weight), parseInt(answers.topSpeed), wheels, parseInt(answers.towingCapacity));
             // push the truck to the vehicles array
-            this.vehicles.push(truck);
+            _this.vehicles.push(truck);
             console.log('Truck created:', truck);
             //selectedVehicleVin to the vin of the truck 
-            this.selectedVehicleVin = truck.vin;
+            _this.selectedVehicleVin = truck.vin;
             // perform actions on the car
-            this.performActions();
+            _this.performActions();
         });
-    }
+    };
     // method to create a motorbike
-    createMotorbike() {
+    Cli.prototype.createMotorbike = function () {
+        var _this = this;
         inquirer_1.default
             .prompt([
             {
@@ -368,50 +372,52 @@ class Cli {
                 message: 'Enter Rear Wheel Brand',
             },
         ])
-            .then((answers) => {
+            .then(function (answers) {
             //Use the answers object to pass the required properties to the Motorbike constructor
-            const wheels = [
+            var wheels = [
                 new Wheel_1.Wheel(parseInt(answers.frontWheelDiameter), answers.frontWheelBrand),
                 new Wheel_1.Wheel(parseInt(answers.rearWheelDiameter), answers.rearWheelBrand)
             ];
-            const motorbike = new Motorbike_1.Motorbike(Cli.generateVin(), answers.color, answers.make, answers.model, parseInt(answers.year), parseInt(answers.weight), parseInt(answers.topSpeed), wheels, 0 // Add a default towing capacity for motorbikes
+            var motorbike = new Motorbike_1.Motorbike(Cli.generateVin(), answers.color, answers.make, answers.model, parseInt(answers.year), parseInt(answers.weight), parseInt(answers.topSpeed), wheels, 0 // Add a default towing capacity for motorbikes
             ); // TODO: push the motorbike to the vehicles array
-            this.vehicles.push(motorbike);
+            _this.vehicles.push(motorbike);
             console.log('Motorbike created:', motorbike);
             // set the selectedVehicleVin to the vin of the motorbike
-            this.selectedVehicleVin = motorbike.vin;
+            _this.selectedVehicleVin = motorbike.vin;
             // perform actions on the motorbike
-            this.performActions();
+            _this.performActions();
         });
-    }
-}
+    };
+    return Cli;
+}());
 exports.Cli = Cli;
 // method to find a vehicle to tow
-class FindVehicleToTow {
-    constructor(vehicles, selectedVehicleVin) {
+var FindVehicleToTow = /** @class */ (function () {
+    function FindVehicleToTow(vehicles, selectedVehicleVin) {
         this.vehicles = vehicles;
         this.selectedVehicleVin = selectedVehicleVin; // Assign in the constructor
     }
-    performActions() {
+    FindVehicleToTow.prototype.performActions = function () {
         console.log('Returning to actions menu...');
-    }
-    find_VehicleToTow() {
+    };
+    FindVehicleToTow.prototype.find_VehicleToTow = function () {
+        var _this = this;
         inquirer_1.default
             .prompt([
             {
                 type: 'list',
                 name: 'vehicleToTow',
                 message: 'Select a vehicle to tow:',
-                choices: this.vehicles.map((vehicle) => ({
-                    name: `${vehicle.vin} -- ${vehicle.make} ${vehicle.model}`,
+                choices: this.vehicles.map(function (vehicle) { return ({
+                    name: "".concat(vehicle.vin, " -- ").concat(vehicle.make, " ").concat(vehicle.model),
                     value: vehicle.vin,
-                })),
+                }); }),
             },
         ])
-            .then((answers) => {
-            const vehicleToTowVin = answers.vehicleToTow; // Get the VIN from answers
-            const vehicleToTow = this.vehicles.find((v) => v.vin === vehicleToTowVin);
-            const selectedVehicle = this.vehicles.find((v) => v.vin === this.selectedVehicleVin);
+            .then(function (answers) {
+            var vehicleToTowVin = answers.vehicleToTow; // Get the VIN from answers
+            var vehicleToTow = _this.vehicles.find(function (v) { return v.vin === vehicleToTowVin; });
+            var selectedVehicle = _this.vehicles.find(function (v) { return v.vin === _this.selectedVehicleVin; });
             // Check if the selected vehicle is a Truck
             if (selectedVehicle instanceof Truck_1.Truck) {
                 if (vehicleToTow) {
@@ -420,7 +426,7 @@ class FindVehicleToTow {
                         console.log('A truck cannot tow itself.');
                     }
                     else {
-                        console.log(`Towing ${vehicleToTow.make} ${vehicleToTow.model}...`);
+                        console.log("Towing ".concat(vehicleToTow.make, " ").concat(vehicleToTow.model, "..."));
                     }
                 }
                 else {
@@ -430,17 +436,18 @@ class FindVehicleToTow {
             else {
                 console.log('Only trucks can tow.');
             }
-            this.performActions(); // Return to actions
+            _this.performActions(); // Return to actions
         });
-    }
-}
+    };
+    return FindVehicleToTow;
+}());
 // method to perform actions on a vehicle
 performActions();
 void {
     // First, get the selected vehicle
     const: selectedVehicle = this.FindSelectedVehicle() // Get the selected vehicle
     , // Get the selected vehicle
-    if(, selectedVehicle) {
+    if: function (, selectedVehicle) {
         console.error("No vehicle selected.");
         return; // Exit the method early if no vehicle is selected
     },
@@ -465,7 +472,7 @@ void {
             ],
         },
     ])
-        .then((answers) => {
+        .then(function (answers) {
         switch (answers.action) {
             case 'Print details':
                 selectedVehicle.printDetails();
@@ -492,10 +499,10 @@ void {
                 selectedVehicle.reverse();
                 break;
             case 'Select or create another vehicle':
-                this.selectOrCreateVehicle();
+                _this.selectOrCreateVehicle();
                 break;
             case 'Tow another vehicle':
-                this.find_VehicleToTow(); // Call the tow method
+                _this.find_VehicleToTow(); // Call the tow method
                 break;
             default:
                 console.log('Exiting...');
@@ -516,13 +523,13 @@ void {
             choices: ['Create a new vehicle', 'Select an existing vehicle'],
         },
     ])
-        .then((answers) => {
+        .then(function (answers) {
         // check if the user wants to create a new vehicle or select an existing vehicle
         if (answers.CreateOrSelect === 'Create a new vehicle') {
-            this.createVehicle();
+            _this.createVehicle();
         }
         else {
-            this.chooseVehicle();
+            _this.chooseVehicle();
         }
     })
 };
@@ -530,7 +537,7 @@ void {
 function createMotorbike() {
     throw new Error("Function not implemented.");
 }
-const cli = new Cli([]);
+var cli = new Cli([]);
 cli.startCli();
 function startCli() {
     throw new Error("Function not implemented.");
