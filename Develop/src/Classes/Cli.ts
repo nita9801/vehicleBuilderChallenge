@@ -74,7 +74,7 @@ createVehicle(): void {
 
       // perform actions on the selected vehicle
       if (this.vehicles) {
-        this.performActions();
+       // this.performActions();
       }
     });
 }
@@ -112,7 +112,7 @@ createVehicle(): void {
             }
           
             // method to start the cli
-            startCli(): void {
+            startCli (): void {
               inquirer
                 .prompt([
                   {
@@ -130,7 +130,7 @@ createVehicle(): void {
                   } else {
                     this.chooseVehicle();
                   }
-                });
+                })
             }
           }
         } else if (answers.action === 'Start vehicle') {
@@ -197,7 +197,7 @@ createVehicle(): void {
         }
         if (!this.exit) {
           // if the user does not want to exit, perform actions on the selected vehicle
-          this.performActions();
+         // this.performActions();
         }
       });
   }
@@ -257,7 +257,7 @@ createVehicle(): void {
         // set the selectedVehicleVin to the vin of the car
         this.selectedVehicleVin = car.vin;
         // perform actions on the car
-      this.performActions(); 
+        this.performActions(); 
     });
 }
 
@@ -329,7 +329,7 @@ createTruck(): void {
         this.selectedVehicleVin = truck.vin;
         
         // perform actions on the car
-        this.performActions(); 
+          this.performActions(); 
     });
   }
         // method to create a motorbike
@@ -409,41 +409,41 @@ createTruck(): void {
           // set the selectedVehicleVin to the vin of the motorbike
           this.selectedVehicleVin = motorbike.vin;
           // perform actions on the motorbike
-          this.performActions();
+         this.performActions();
         })
     }
   }
         // method to find a vehicle to tow
-
-        findVehicleToTow(): void {
-        inquirer
-
-        .prompt([
-          {
-            type: 'list',
-            name: 'vehicleToTow',
-            message: 'Select a vehicle to tow:',
-            choices: this.vehicles.map((vehicle) => ({
-              name: `${vehicle.vin} -- ${vehicle.make} ${vehicle.model}`,
-              value: vehicle.vin,
+        class findVehicleToTow {
+          find_VehicleToTow(): void {
+            inquirer
+            .prompt([
+              {
+                type: 'list',
+                name: 'vehicleToTow',
+                message: 'Select a vehicle to tow:',
+                choices: this.vehicles.map((vehicle) => ({
+                name: `${vehicle.vin} -- ${vehicle.make} ${vehicle.model}`,
+                value: vehicle.vin,
             })),
-        },
-      ])
-      .then((answers) => { const vehicleToTow = this.vehicles.find((v) => v.vin === answers.vehicleToTow);
-        const selectedVehicle = this.vehicles.find((v) => v.vin === this.selectedVehicleVin);
-  
-        if (selectedVehicle instanceof Truck) {
-          if (selectedVehicle.vin === vehicleToTow?.vin) {
-            console.log('A truck cannot tow itself.');
-          } else if (vehicleToTow) {
-            console.log(`Towing ${vehicleToTow.make} ${vehicleToTow.model}...`);
           }
-        } else {
-          console.log('Only trucks can tow.');
-        }
-        this.performActions(); // Return to actions
-      })
-  }
+       ])
+            .then((answers) => { 
+              const vehicleToTow = this.vehicles.find((v) => v.vin === answers.vehicleToTow);
+              const selectedVehicle = this.vehicles.find((v) => v.vin === this.selectedVehicleVin);
+        
+              if (selectedVehicle instanceof Truck) {
+                if (selectedVehicle.vin === vehicleToTow?.vin) {
+                  console.log('A truck cannot tow itself.');
+                } else if (vehicleToTow) {
+                  console.log(`Towing ${vehicleToTow.make} ${vehicleToTow.model}...`);
+                }
+              } else {
+                console.log('Only trucks can tow.');
+              }
+              this.performActions(); // Return to actions
+            });
+      }
 
   // method to perform actions on a vehicle
   performActions(): void {
@@ -578,42 +578,8 @@ cli.startCli();
 function startCli() {
   throw new Error("Function not implemented.");
 }
-findVehicleToTow(): void {
-  
-  inquirer
 
-    .prompt([
-      {
-        type: 'list',
-        name: 'vehicleToTow',
-        message: 'Select a vehicle to tow',
-        choices: this.vehicles.map((vehicle: { vin: any; make: any; model: any; }) => {
-          return {
-            name: `${vehicle.vin} -- ${vehicle.make} ${vehicle.model}`,
-            value: vehicle.vin,
-          };
-        }),
-      },
-    ])
-    .then((answers: { vehicleToTow: any; }) => {
-      const vehicleToTow = this.vehicles?.find((vehicle: { vin: any; }) => vehicle.vin === answers.vehicleToTow);
-      const selectedVehicle = this.vehicles.find((vehicle: { vin: any; }) => vehicle.vin === this.selectedVehicleVin);
-
-      if (selectedVehicle instanceof Truck) {
-        if (selectedVehicle.vin === vehicleToTow?.vin) {
-          console.log('A truck cannot tow itself.');
-        } else if (vehicleToTow) {
-          selectedVehicle.tow(vehicleToTow);
-          console.log(`Truck is now towing ${vehicleToTow.make} ${vehicleToTow.model}`);
-        }
-      } else {
-        console.log('Only trucks can tow other vehicles.');
-      }
-
-      this.performActions();
-    })
-}
-function findVehicleToTow() {
+function find_VehicleToTow() {
   throw new Error("Function not implemented.");
 }
 
