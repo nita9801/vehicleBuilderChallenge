@@ -1,6 +1,6 @@
 // importing classes from other files
 import { Motorbike }from "./Motorbike";
-import { car } from "./car";
+import { car } from "./Car";
 import { Truck } from"./Truck";
 import { Wheel } from"./Wheel";
 import { Vehicle } from './Vehicle';

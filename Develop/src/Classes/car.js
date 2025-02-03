@@ -1,14 +1,17 @@
+"use strict";
 // Importing Vehicle and Wheel classes
-import { Vehicle } from './Vehicle';
-import { Wheel } from './Wheel';
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.car = void 0;
+const Vehicle_1 = require("./Vehicle");
+const Wheel_1 = require("./Wheel");
 // Car class that extends Vehicle class
-export class Car extends Vehicle {
+class car extends Vehicle_1.Vehicle {
     // Constructor for the Car class
-    constructor(vin, color, make, model, year, weight, topSpeed, wheels
-    // Call the constructor of the parent class, Vehicle
-    ) {
-        // Initialize properties of the Car class
+    constructor(vin, color, make, model, year, weight, topSpeed, wheels) {
+        // Call the constructor of the parent class, Vehicle
         super(vin, color, make, model, year, weight, topSpeed);
+        this.Wheel = [];
+        // Initialize properties of the Car class
         this.vin = vin;
         this.color = color;
         this.make = make;
@@ -20,10 +23,10 @@ export class Car extends Vehicle {
         // If not, create 4 new Wheel objects
         // Otherwise, use the provided wheels array
         if (wheels.length !== 4) {
-            this.wheels = [new Wheel(), new Wheel(), new Wheel(), new Wheel()];
+            this.Wheel = [new Wheel_1.Wheel(), new Wheel_1.Wheel(), new Wheel_1.Wheel(), new Wheel_1.Wheel()];
         }
         else {
-            this.wheels = wheels;
+            this.Wheel = wheels;
         }
     }
     // Override the printDetails method from the Vehicle class
@@ -39,10 +42,12 @@ export class Car extends Vehicle {
         console.log(`Weight: ${this.weight} lbs`);
         console.log(`Top Speed: ${this.topSpeed} mph`);
         // Print details of the wheels
-        console.log(`Wheel 1: ${this.wheels[0].getDiameter} inch with a ${this.wheels[0].getTireBrand} tire`);
-        console.log(`Wheel 2: ${this.wheels[1].getDiameter} inch with a ${this.wheels[1].getTireBrand} tire`);
-        console.log(`Wheel 3: ${this.wheels[2].getDiameter} inch with a ${this.wheels[2].getTireBrand} tire`);
-        console.log(`Wheel 4: ${this.wheels[3].getDiameter} inch with a ${this.wheels[3].getTireBrand} tire`);
+        console.log(`Wheel 1: ${this.Wheel[0].getDiameter} inch with a ${this.Wheel[0].getTireBrand} tire`);
+        console.log(`Wheel 2: ${this.Wheel[1].getDiameter} inch with a ${this.Wheel[1].getTireBrand} tire`);
+        console.log(`Wheel 3: ${this.Wheel[2].getDiameter} inch with a ${this.Wheel[2].getTireBrand} tire`);
+        console.log(`Wheel 4: ${this.Wheel[3].getDiameter} inch with a ${this.Wheel[3].getTireBrand} tire`);
     }
 }
-
+exports.car = car;
+// Export the Car class as the default export
+exports.default = car;

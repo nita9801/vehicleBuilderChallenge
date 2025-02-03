@@ -1,7 +1,7 @@
 // import the classes
 import { Truck }  from '../classes/Truck';
 import { Motorbike } from '../classes/Motorbike';
-import { car } from '../classes/car';
+import { car } from '../classes/Car';
 
 
 // define the interface

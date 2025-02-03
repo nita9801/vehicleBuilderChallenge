@@ -2,7 +2,7 @@
 
 import { Vehicle } from './Vehicle';
 import { Motorbike }from './Motorbike';
-import { car } from './car';
+import { car } from './Car';
 import { Wheel } from './Wheel';
 import AbleToTow from '../Interfaces/Able To Tow';
 import { NamedTupleMember } from 'typescript';

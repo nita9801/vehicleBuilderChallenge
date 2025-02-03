@@ -1,6 +1,6 @@
 // importing classes from other files
 import inquirer from "inquirer";
-import Car from "./car";
+import Car from "./Car";
 import Wheel from "./Wheel";
 import Vehicle from "./Vehicle";
 import Truck from "./Truck";
