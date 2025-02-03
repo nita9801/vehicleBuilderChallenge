@@ -31,5 +31,5 @@ export class Truck extends Vehicle {
         console.log(`Wheels: ${this.wheels.map(wheel => `${wheel.getDiameter} inch ${wheel.getTireBrand}`).join(', ')}`);
     }
 }
-// Export the Truck class as the default export
-export default Truck;
+
+

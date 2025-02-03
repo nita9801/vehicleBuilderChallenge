@@ -1,14 +1,16 @@
 // importing classes from other files
 import inquirer from "inquirer";
-import Truck from "./Truck";
 import Car from "./car";
 import Wheel from "./Wheel";
+import Vehicle from "./Vehicle";
+import Truck from "./Truck";
+import  Motorbike from "./Motorbike";
 // define the Cli class
 export default class Cli {
-    // TODO: Update the constructor to accept Truck and Motorbike objects as well
-    constructor(vehicles) {
-        this.exit = false;
-        this.vehicles = vehicles;
+    constructor() {
+        this.vehicles = Vehicle;
+        this.truck = Truck;
+        this.motorbike = Motorbike;
     }
     // static method to generate a vin
     static generateVin() {
@@ -47,16 +49,21 @@ export default class Cli {
                 type: 'list',
                 name: 'vehicleType',
                 message: 'Select a vehicle type',
-                // TODO: Update the choices array to include Truck and Motorbike
-                choices: ['Car'],
+                choices: ['Car','Truck','Motorbike'],
             },
         ])
             .then((answers) => {
             if (answers.vehicleType === 'Car') {
                 // create a car
                 this.createCar();
-            }
-            // TODO: add statements to create a truck or motorbike if the user selects the respective vehicle type
+            } else if (answers.vehicleType === 'Truck') {
+                // create a truck
+                this.createTruck();
+            } else if (answers.vehicleType === 'Motorbike') {
+                // create a motorbike
+                this.createMotorbike();
+            };
+            
         });
     }
     // method to create a car

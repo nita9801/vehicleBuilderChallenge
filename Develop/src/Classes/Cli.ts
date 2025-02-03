@@ -1,13 +1,11 @@
 // importing classes from other files
-
 import { Motorbike }from "./Motorbike";
 import { car } from "./car";
 import { Truck } from"./Truck";
 import { Wheel } from"./Wheel";
 import { Vehicle } from './Vehicle';
 import inquirer from "inquirer";
-
-    // define the Cli class
+// define the Cli class
 export class Cli {
   [x: string]: any;
   vehicles: (car| Truck| Motorbike)[];
@@ -441,17 +439,17 @@ createTruck(): void {
           },
        ])
             .then((answers) => {
-              const vehicleToTowVin: string = answers.vehicleToTow; 
-              const vehicleToTow: Vehicle | undefined = this.vehicles.find((v) => v.vin === vehicleToTow);
-              const selectedVehicle: Vehicle | undefined= this.vehicles.find((v) => v.vin === this.selectedVehicleVin);
+              const vehicleToTowVin: string = answers.vehicleToTow; // Get the VIN from answers
+              const vehicleToTow = this.vehicles.find((v) => v.vin === vehicleToTowVin);
+              const selectedVehicle = this.vehicles.find((v) => v.vin === this.selectedVehicleVin);
         // Check if the selected vehicle is a Truck
               if (selectedVehicle instanceof Truck) {
                 if (vehicleToTow) {
         // Check if the truck is trying to tow itself
-                if (selectedVehicle.vin === vehicleToTow?.vin) {
+                if (selectedVehicle.vin === vehicleToTow.vin) {
                   console.log('A truck cannot tow itself.');
                 } else {
-                  console.log(`Towing ${vehicleToTow.make} ${vehicleToTow.model}...`);
+                console.log(`Towing ${vehicleToTow.make} ${vehicleToTow.model}...`);  
                 } 
                 } else {
                 console.log('No valid vehicle selected to tow.');
@@ -462,10 +460,18 @@ createTruck(): void {
               this.performActions(); // Return to actions
             });
           }
-      }
+        }
 
   // method to perform actions on a vehicle
   performActions(): void {
+    // First, get the selected vehicle
+    const selectedVehicle = this.FindSelectedVehicle() // Get the selected vehicle
+
+    if (!selectedVehicle) {
+        console.error("No vehicle selected.");
+        return; // Exit the method early if no vehicle is selected
+    }
+
     inquirer
       .prompt([
         {
@@ -487,13 +493,8 @@ createTruck(): void {
         },
       ])
       .then((answers: { action: string } ) => {
-        const selectedVehicle = this.FindSelectedVehicle();
-        // perform the selected action
-        if (!selectedVehicle) {
-          console.log('No vehicle selected.');
-          return;
-        };
-        switch (answers.action) {
+        
+          switch (answers.action) {
           case 'Print details':
             selectedVehicle.printDetails();
             break;
@@ -518,6 +519,9 @@ createTruck(): void {
           case 'Reverse':
             selectedVehicle.reverse();
             break;
+            case 'Select or create another vehicle':
+            this.selectOrCreateVehicle(); 
+            break;
           case 'Tow another vehicle':
             this.find_VehicleToTow(); // Call the tow method
             break;
@@ -525,8 +529,8 @@ createTruck(): void {
             console.log('Exiting...');
             break;
         }
-      })
-  };
+      });
+  }
        // method to start the cli
   startCli(): void {
     inquirer
