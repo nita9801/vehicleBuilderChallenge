@@ -1,6 +1,6 @@
 // Importing Vehicle and Wheel classes
-import { Vehicle } from './Vehicle';
-import { Wheel } from './Wheel';
+import { Vehicle } from "./Vehicle";
+import { Wheel } from "./Wheel";
 // TODO: The Motorbike class should extend the Vehicle class
 export class Motorbike extends Vehicle {
     // TODO: Create a constructor that accepts the properties of the Motorbike class
@@ -39,4 +39,5 @@ export class Motorbike extends Vehicle {
         console.log(`Wheels: ${this.wheels.map(wheel => `${wheel.getDiameter} inch ${wheel.getTireBrand}`).join(', ')}`);
     }
 }
-
+// Export the Motorbike class as the default export
+export default Motorbike;
