@@ -1,10 +1,10 @@
 // import the Vehicle, Motorbike, Car, Wheel, and AbleToTow classes/interfaces
 
-import { Vehicle } from './Vehicle';
-import { Motorbike }from './Motorbike';
-import { Car } from './Car.js';
-import { Wheel } from './Wheel';
-import AbleToTow from '../Interfaces/AbletoTow.js';
+import { Vehicle } from "./Vehicle.js";
+import { Motorbike }from "./Motorbike.js";
+import { Car } from "./Car.js";
+import { Wheel } from "./Wheel.js";
+import AbleToTow from "../Interfaces/AbletoTow.js";
 
 
 //  The Truck class should extend the Vehicle class and should implement the AbleToTow interface
