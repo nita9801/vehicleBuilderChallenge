@@ -5,9 +5,6 @@
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
     &middot;
-    <a href="https://github.com/othneildrew/Best-README-Template/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    &middot;
-    <a href="https://github.com/othneildrew/Best-README-Template/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
 </div>
 
@@ -70,7 +67,7 @@ Instructions on how to use the project.
 <!-- LICENSE -->
 ## License
 
-Distributed under the Unlicense License. See `LICENSE.txt` for more information.
+Distributed under the MIT License. See `License` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -79,9 +76,7 @@ Distributed under the Unlicense License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/nita9801/vehicleBuilderChallenge.git](https://github.com/nita9801/vehicleBuilderChallenge.git)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
