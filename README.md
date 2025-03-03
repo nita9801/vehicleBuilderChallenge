@@ -3,9 +3,6 @@
   <p align="center">
    Get Ready! For the Vehicle of your Dreams!
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
     <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
     &middot;
     <a href="https://github.com/othneildrew/Best-README-Template/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
@@ -13,7 +10,6 @@
     <a href="https://github.com/othneildrew/Best-README-Template/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
 </div>
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -30,11 +26,9 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -51,27 +45,28 @@ you can take that baby out for a spin.
 1. Download typscript
 2. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git@github.com:nita9801/vehicleBuilderChallenge.git
    ```
 3. Install NPM packages
    ```sh
    npm install
+   npm install inquirer
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-5. Change git remote url to avoid accidental pushes to base project
+4. Change git remote url to avoid accidental pushes to base project
    ```sh
    git remote set-url origin github_username/repo_name
    git remote -v # confirm the changes
    ```
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+<!-- Usage -->
 ## Usage
 Instructions on how to use the project.
-
+ make sure that the dependancies are downloaded. 
+ To build the application
+ npm run build
+ to run the application 
+ npm run start
+ then follow the prompts
 <!-- LICENSE -->
 ## License
 
