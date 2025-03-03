@@ -56,7 +56,9 @@ you can take that baby out for a spin.
    ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 <!-- Usage -->
-## Usage
+
+### Usage
+
 Instructions on how to use the project.
  make sure that the dependancies are downloaded. 
  To build the application
@@ -65,15 +67,15 @@ Instructions on how to use the project.
  npm run start
  then follow the prompts
 <!-- LICENSE -->
-## License
+
+### License
 
 Distributed under the MIT License. See `License` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- CONTACT -->
+
 ## Contact
 
 Project Link: [https://github.com/nita9801/vehicleBuilderChallenge.git](https://github.com/nita9801/vehicleBuilderChallenge.git)
