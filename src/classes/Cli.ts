@@ -3,7 +3,6 @@ import { Motorbike } from "./Motorbike.js";
 import { Car } from "./Car.js";
 import { Truck } from "./Truck.js";
 import { Wheel } from "./Wheel.js";
-import { Vehicle } from "./Vehicle.js";
 import inquirer from 'inquirer';
 
 // define the Cli class
