@@ -1,3 +1,12 @@
+<a id="readme-top"></a>
+
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/nita9801/vehicleBuilderChallenge.git">
+    <img src="assets\vehicle builder.png" alt="Logo" width="80" height="80">
+  </a>
+
 <h3 align="center">vehicleBuilderChallenge</h3>
 
   <p align="center">
@@ -70,7 +79,7 @@ Instructions on how to use the project.
 
 ### License
 
-Distributed under the MIT License. See `License` for more information.
+Distributed under the MIT License. See LICENCE.txt for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -79,7 +88,7 @@ Distributed under the MIT License. See `License` for more information.
 ## Contact
 
 Project Link: [https://github.com/nita9801/vehicleBuilderChallenge.git](https://github.com/nita9801/vehicleBuilderChallenge.git)
-
+email: [187074331+nita9801@users.noreply.github](187074331+nita9801@users.noreply.github)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Contributing
