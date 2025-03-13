@@ -25,10 +25,9 @@
       <a href="#Description">Description</a>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <<a href="#prerequisites">Prerequisites</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#installation">Installation</a></li> 
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -44,7 +43,8 @@ you can take that baby out for a spin.
 
 ### Prerequisites
 * Must have typescript
-*  
+*  node.js
+*  enquierer
 
 ### Installation
 
