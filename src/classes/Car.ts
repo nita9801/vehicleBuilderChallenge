@@ -1,25 +1,33 @@
 // Importing Vehicle and Wheel classes
-
-import { Vehicle } from "./Vehicle.js";
-import { Wheel } from "./Wheel.js";
+import Vehicle from './Vehicle.js';
+import Wheel from './Wheel.js';
 
 // Car class that extends Vehicle class
-export class Car extends Vehicle {
-  override vin: string; 
-  override color: string; 
-  override make: string; 
-  override model: string;
-  override year: number;
-  override weight: number;
-  override topSpeed: number;
-  Wheel: Wheel[] = [];
-  static vin: string | undefined;
-  
+class Car extends Vehicle {
+  // Declare properties of the Car class
+  vin: string;
+  color: string;
+  make: string;
+  model: string;
+  year: number;
+  weight: number;
+  topSpeed: number;
+  wheels: Wheel[];
+
   // Constructor for the Car class
-  constructor(vin: string, color: string, make: string, model: string, year: number, weight: number, topSpeed: number, wheels: Wheel[]) 
-  { 
+  constructor(
+    vin: string,
+    color: string,
+    make: string,
+    model: string,
+    year: number,
+    weight: number,
+    topSpeed: number,
+    wheels: Wheel[]
+  ) {
     // Call the constructor of the parent class, Vehicle
-    super(vin, color, make, model, year, weight, topSpeed);
+    super();
+
     // Initialize properties of the Car class
     this.vin = vin;
     this.color = color;
@@ -32,9 +40,9 @@ export class Car extends Vehicle {
     // If not, create 4 new Wheel objects
     // Otherwise, use the provided wheels array
     if (wheels.length !== 4) {
-      this.Wheel = [new Wheel(), new Wheel(), new Wheel(), new Wheel()];
+      this.wheels = [new Wheel(), new Wheel(), new Wheel(), new Wheel()];
     } else {
-      this.Wheel = wheels;
+      this.wheels = wheels;
     }
   }
 
@@ -54,17 +62,19 @@ export class Car extends Vehicle {
 
     // Print details of the wheels
     console.log(
-      `Wheel 1: ${this.Wheel[0].getDiameter} inch with a ${this.Wheel[0].getTireBrand} tire`
+      `Wheel 1: ${this.wheels[0].getDiameter} inch with a ${this.wheels[0].getTireBrand} tire`
     );
     console.log(
-      `Wheel 2: ${this.Wheel[1].getDiameter} inch with a ${this.Wheel[1].getTireBrand} tire`
+      `Wheel 2: ${this.wheels[1].getDiameter} inch with a ${this.wheels[1].getTireBrand} tire`
     );
     console.log(
-      `Wheel 3: ${this.Wheel[2].getDiameter} inch with a ${this.Wheel[2].getTireBrand} tire`
+      `Wheel 3: ${this.wheels[2].getDiameter} inch with a ${this.wheels[2].getTireBrand} tire`
     );
     console.log(
-      `Wheel 4: ${this.Wheel[3].getDiameter} inch with a ${this.Wheel[3].getTireBrand} tire`
+      `Wheel 4: ${this.wheels[3].getDiameter} inch with a ${this.wheels[3].getTireBrand} tire`
     );
   }
 }
 
+// Export the Car class as the default export
+export default Car;

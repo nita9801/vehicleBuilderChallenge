@@ -86,9 +86,12 @@ Distributed under the MIT License. See LICENCE.txt for more information.
 <!-- CONTACT -->
 
 ## Contact
+Demo: [https://app.screencastify.com/v3/watch/YNPwpXIg7p2Sq7fCVFmG](https://app.screencastify.com/v3/watch/YNPwpXIg7p2Sq7fCVFmG)
 
 Project Link: [https://github.com/nita9801/vehicleBuilderChallenge.git](https://github.com/nita9801/vehicleBuilderChallenge.git)
-email: [187074331+nita9801@users.noreply.github](187074331+nita9801@users.noreply.github)
+
+email: [nita9801@gmail.com](nita9801@gmail.com)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Contributing

@@ -3,6 +3,7 @@ interface Driveable {
   // declare the properties
   started: boolean;
   currentSpeed: number;
+  
   // declare the methods
   start(): void;
   accelerate(change: number): void;
